@@ -24,6 +24,7 @@ namespace MvcApiPersonajesAWS.Controllers
             return View();
         }
 
+        [HttpPost]
         public async Task<IActionResult> Create(Personaje personaje)
         {
             await this.service.InsertPersonajeAsync(personaje);
@@ -35,6 +36,7 @@ namespace MvcApiPersonajesAWS.Controllers
             return View();
         }
 
+        [HttpPost]
         public async Task<IActionResult> Edit(Personaje personaje)
         {
             await this.service.PutPersonajeAsync(personaje);
