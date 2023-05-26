@@ -1,0 +1,40 @@
+﻿@section Scripts{
+    <script>
+        $(document).ready(function() {
+            $("#botonload").click(function() {
+                console.log("Click");
+                var url = "https://54.236.236.63/api/Personajes";
+                $.get(url, function(data) {
+                    console.log("leyendo");
+                    console.log(data);
+                    var html = "";
+                    $.each(data, function(index, personaje) {
+                        html += "<tr>";
+                        html += "<td>" + personaje.nombre + "</td>";
+                        html += "<td>";
+                        html += "<img src='" + personaje.imagen + "' style='"
+                            + "width:150px;height:150px'/>";
+                        html += "</td>";
+                        html += "</tr>";
+                    });
+                    $("#tablapersonajes tbody").html(html);
+                });
+            });
+        });
+    </script>
+}
+
+<h1 style="color:blue">Api EC2 Personajes Ajax</h1>
+
+<button id="botonload" class="btn btn-info">
+    Load Personajes
+</button>
+<table id="tablapersonajes" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Imagen</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
